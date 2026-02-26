@@ -223,11 +223,6 @@ EOF
 apply_changes() {
     local daily_file="$DAILY_DIR/${target_date}.md"
     
-    if [[ ! -f "$daily_file" ]]; then
-        log_error "找不到日志文件: $daily_file"
-        exit 1
-    fi
-    
     log_info "开始执行提炼写入..."
     
     # 1. 生成提炼报告
@@ -309,14 +304,23 @@ main() {
     log_info "模式: $MODE"
     log_info "日期: $target_date"
     
+    # 前置检查：日志不存在或内容过少（<10行）则跳过，不产出空报告
+    local daily_file="$DAILY_DIR/${target_date}.md"
+    if [[ ! -f "$daily_file" ]]; then
+        log_info "无日志文件，跳过提炼"
+        log_info "=== 记忆提炼完成（跳过） ==="
+        return 0
+    fi
+    local line_count=$(wc -l < "$daily_file" 2>/dev/null || echo 0)
+    if [[ $line_count -lt 10 ]]; then
+        log_info "日志内容过少（${line_count}行），跳过提炼"
+        log_info "=== 记忆提炼完成（跳过） ==="
+        return 0
+    fi
+
     case "$MODE" in
         "report-only")
-            local daily_file="$DAILY_DIR/${target_date}.md"
-            if [[ -f "$daily_file" ]]; then
-                generate_report "$daily_file"
-            else
-                log_warn "无日志可处理，跳过提炼"
-            fi
+            generate_report "$daily_file"
             ;;
         "apply")
             apply_changes
