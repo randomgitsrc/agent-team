@@ -51,6 +51,13 @@ Start script: `~/.start-openclaw-chrome.sh`
 ### API Keys（路径）
 - OpenAI / Gemini / Kimi: `~/.openclaw/.env`
 
+### GitHub
+- 用户名: randomgitsrc
+- 仓库: videsmemory
+- 远程: https://github.com/randomgitsrc/videsmemory.git
+- 分支: main
+- Token 存储: `~/.git-credentials`（credential store，权限600）
+
 ### TTS
 - Preferred voice: "Nova"
 - Default speaker: Kitchen HomePod
