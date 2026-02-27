@@ -10,21 +10,19 @@
 - **Token优化**：摘要加载，按需读取
 
 ## 会话加载（精简版）
-### 基础加载（必须<3KB）
-1. `SOUL.md` — 身份人设（原文件，小）
-2. `USER.md` — 用户画像（原文件，小）
-3. `IDENTITY.md` — 身份定义（原文件，小）
-4. `PROJECT-SNAPSHOT.md` — 项目快照（摘要，<1KB）
-5. `STRATEGY-SUMMARY.md` — 战略摘要（摘要，<1KB）
-6. `MEMORY-SNAPSHOT.md` — 架构快照（摘要，<0.5KB）
-7. `SKILL-CORE.md` — 核心技能索引（极简，<0.2KB）
+### 自动加载（workspace根目录，OpenClaw注入）
+1. `SOUL.md` — 身份人设
+2. `USER.md` — 用户画像
+3. `IDENTITY.md` — 身份定义
+4. `AGENTS.md` — 工作区指南
+5. `MEMORY.md` — 记忆索引
+6. Skill列表 — 系统自动注入 available_skills
 
-**总计**: ~2.5KB（目标）
-
-### 按需加载（需要时读取完整文件）
-- `memory/private/STRATEGY.md` — 完整战略（需要战略详情时）
-- `memory/work/PROJECT.md` — 完整项目（需要项目详情时）
-- `memory/daily/YYYY-MM-DD.md` — 今日日志（需要日志详情时）
+### 按需加载（需要时主动读取）
+- `memory/private/STRATEGY.md` — 完整战略
+- `memory/work/PROJECT.md` — 完整项目
+- `memory/work/TODO.md` — 任务清单
+- `memory/daily/YYYY-MM-DD.md` — 当日日志
 - 具体SKILL.md文件（匹配到skill时）
 
 ## 安全门禁（Gates）
@@ -69,9 +67,8 @@
 
 ## Token优化
 ```
-原体系: 15-18KB
-现体系: 3-4KB（目标）
-节省: 11-14KB（73-78%）
+策略: workspace根目录文件自动注入，其余按需读取
+目标: 根目录文件总量尽量精简
 ```
 
 ---

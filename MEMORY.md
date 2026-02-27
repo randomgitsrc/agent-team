@@ -10,27 +10,20 @@
 3. **工作日志** (`daily/`) - 每日记录
 
 ## 加载策略
-### 基础加载（摘要）
-- `PROJECT-SNAPSHOT.md` — 项目快照
-- `STRATEGY-SUMMARY.md` — 战略摘要  
-- `MEMORY-SNAPSHOT.md` — 架构快照
+### 自动加载（workspace根目录，OpenClaw注入）
+- SOUL.md / USER.md / IDENTITY.md / AGENTS.md / MEMORY.md
+- Skill列表（系统注入 available_skills）
 
-### 按需加载
+### 按需加载（需要时主动读取）
 - `memory/private/STRATEGY.md` — 完整战略
 - `memory/work/PROJECT.md` — 完整项目
-- `memory/daily/YYYY-MM-DD.md` — 今日日志
+- `memory/work/TODO.md` — 任务清单
+- `memory/daily/YYYY-MM-DD.md` — 当日日志
 
 ## 自动化
 - **记忆提炼**: 每日23:45（提取关键决策）
 - **心跳检查**: 每30分钟（任务监控）
 - **Git提交**: 每日03:00（自动备份）
-
-## Token优化
-```
-原体系: 15-18KB
-现目标: 3-4KB
-节省: 11-14KB（73-78%）
-```
 
 ---
 **详细**: 见 `AGENTS.md`

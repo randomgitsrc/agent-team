@@ -1,27 +1,5 @@
-# HEARTBEAT.md - 心跳检查规则（已停用）
+# HEARTBEAT.md
 
-> **状态**: 已停用  
-> **停用时间**: 2026-02-27  
-> **原因**: 避免不必要消息打扰
+# Keep this file empty (or with only comments) to skip heartbeat API calls.
 
----
-
-## 📋 历史
-
-- 2026-02-25 ~ 2026-02-26：每30分钟检查任务状态
-- 2026-02-27：改为每2小时检查
-- 2026-02-27：完全停用，删除cron任务
-
-## 🔧 替代方案
-
-### 保留的自动化
-- **Git自动提交**: 每日03:00（静默执行）
-- **记忆提炼**: 每日23:45（静默执行）
-
-### 手动检查
-如需检查任务状态，可随时查看 `memory/work/TODO.md`。
-
----
-
-**最后更新**: 2026-02-27  
-**维护**: 阿九
+# Add tasks below when you want the agent to check something periodically.
