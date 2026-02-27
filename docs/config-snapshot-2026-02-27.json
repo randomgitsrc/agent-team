@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.22",
+    "lastTouchedAt": "2026-02-26T05:11:05.389Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-26T05:11:05.373Z",
+    "lastRunVersion": "2026.2.22",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "models": {
+    "providers": {
+      "omniroute": {
+        "baseUrl": "http://localhost:20128/v1",
+        "apiKey": "sk-774c4****4e33",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "combo-main",
+            "name": "combo-main"
+          },
+          {
+            "id": "combo-pre",
+            "name": "combo-pre"
+          },
+          {
+            "id": "combo-pro",
+            "name": "combo-pro"
+          },
+          {
+            "id": "combo-vision",
+            "name": "combo-vision",
+            "input": [
+              "text",
+			  "image"
+            ]
+          },
+		  {
+            "id": "if/kimi-k2.5",
+            "name": "if/kimi-k2.5",
+            "input": [
+              "text",
+			  "image"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "browser": {
+    "enabled": true,
+    "defaultProfile": "openclaw",
+    "headless": false,
+    "noSandbox": true,
+    "executablePath": "/usr/bin/google-chrome",
+    "profiles": {
+      "openclaw": {
+        "cdpPort": 18800,
+        "color": "#FF4500"
+      }
+    }
+  },
+  "tools": {
+    "exec": {
+      "security": "full",
+      "ask": "off"
+    },
+    "web": {
+      "search": {
+        "provider": "brave",
+        "apiKey": "BSANdnVaepPHLLSK4L-NQxcrmyKWwYv",
+        "maxResults": 5,
+        "timeoutSeconds": 30
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "omniroute/combo-main"
+      },
+	  "imageModel": {
+	    "primary": "omniroute/if/kimi-k2.5"
+	  },
+      "models": {
+        "omniroute/combo-main": {
+          "alias": "omniroute/combo-main"
+        },
+        "omniroute/combo-pre": {
+          "alias": "omniroute/combo-pre"
+        },
+        "omniroute/combo-pro": {
+          "alias": "omniroute/combo-pro"
+        },
+        "omniroute/combo-vision": {
+          "alias": "omniroute/combo-vision"
+        },
+        "omniroute/if/kimi-k2.5": {
+          "alias": "omniroute/if/kimi-k2.5"
+        }
+      },
+      "workspace": "/home/nmaster/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "session-memory": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "8595104786:AAGhS5_8d0hdJQwcB6b2I4tS25_8YwqHxjM",
+      "groupPolicy": "allowlist",
+      "streaming": "partial"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "edcca20d9b00bfe086796a69498bf60d1aa7fea046129e07"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      }
+    }
+  }
+}
