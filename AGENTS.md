@@ -81,6 +81,33 @@
 目标: 根目录文件总量尽量精简
 ```
 
+## 后台任务规范
+
+### 强制要求
+所有后台编码任务（Claude Code / Codex / Pi 等）**必须**通过 wrapper 脚本启动：
+
+```bash
+# 模板
+bash pty:true workdir:<目录> background:true command:"~/.openclaw/workspace/scripts/bg_task.sh '<任务描述>' claude --dangerously-skip-permissions '<prompt>'"
+```
+
+### 机制
+1. **bg_task.sh** 包装命令执行，进程退出后**必然**发 `openclaw system event --mode now`
+2. **双保险（方案 A）**：prompt 末尾仍保留 `openclaw system event` 指令，Claude Code 正常完成时先触发
+3. 通知链路延迟：**5-15 秒**内送达
+
+### 禁止行为
+- ❌ 直接 `exec background:true` 起 Claude Code 不经过 wrapper
+- ❌ 后台任务完成/失败后不通知老板
+- ❌ 收到系统事件后默默 NO_REPLY
+
+### 失败案例（2026-02-27）
+**问题**: 直接起 Claude Code 后台任务，进程超时退出，未通知老板，老板等了 5+ 分钟才主动询问
+**根因**: 无兜底通知机制，依赖 AI "自觉"发消息
+**修复**: bg_task.sh wrapper + 双保险通知
+
+---
+
 ## 记忆查询策略
 
 使用 `memory_search` 时必须执行以下步骤：
