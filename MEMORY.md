@@ -8,6 +8,23 @@
 1. **私密记忆** (`private/`) - 战略、身份、用户
 2. **工作记忆** (`work/`) - 项目、任务
 3. **工作日志** (`daily/`) - 每日记录
+4. **Session 临时记录** (`~/.openclaw/sessions/`) - 自动清理，非 Git 追踪
+
+## Session 文件管理（安全隔离）
+OpenClaw 自动生成 `memory/20*.md` 对话记录，可能包含敏感信息（API key）。
+
+**处理方案**（2026-02-27 更新）：
+- **生成位置**: `workspace/memory/20*.md`
+- **自动转移**: 每天 03:00 移动到 `~/.openclaw/sessions/`
+- **保留期限**: 7 天自动删除
+- **Git 排除**: `.gitignore` 已配置 `memory/20*-*.md`
+
+**手动清理**:
+```bash
+~/.openclaw/workspace/scripts/cleanup_sessions.sh
+```
+
+**重要**: 如需长期保留对话内容，提炼后写入 `memory/daily/` 或 `memory/work/`，勿直接依赖 session 文件。
 
 ## 加载策略
 ### 自动加载（workspace根目录，OpenClaw注入）

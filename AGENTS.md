@@ -29,7 +29,7 @@
 
 | 门禁 | 触发条件 | 要求 |
 |------|----------|------|
-| **gate corefile** | 修改核心配置文件（openclaw.json、SOUL.md、AGENTS.md 等） | 必须先回答三问：改什么 / 为什么 / 回滚方案 |
+| **gate corefile** | 修改核心配置文件（openclaw.json、SOUL.md、AGENTS.md 等） | 必须先回答三问：改什么 / 为什么 / 回滚方案，并执行验证清单 |
 | **gate script** | 编写任何脚本 | 回复必须包含审计块，没有审计块 = 任务未完成 |
 | **gate publish** | 对外发布内容 | 必须跑发布 checklist（准确性、敏感信息、格式） |
 | **gate trade** | 涉及交易/资金逻辑变更 | 必须人工确认，不自动执行 |
@@ -45,6 +45,15 @@
 - 副作用：[描述]
 - 回滚方式：[描述]
 ```
+
+### gate corefile 配置修改验证清单
+修改 openclaw.json / API 配置 / 模型配置时必须执行：
+1. **查文档**：确认字段名称、值范围、端点格式（如 `Qwen3-Embedding-8B` 不是 `Qwen3-VL-Embedding-8B`）
+2. **跑测试**：用 curl 或最小脚本验证配置有效（如 embedding 接口返回 200）
+3. **有回滚**：备份原配置或确保能快速恢复（如 `git checkout` 或保留 `.bak`）
+4. **验证重启**：`openclaw doctor` 或 `openclaw status` 确认无报错
+
+**错误案例**：2026-02-27 因模型名称差 `VL` 导致 memory_search 失效，修复耗时 30 分钟。
 
 ## 行为准则
 - **随手记**：会话中遇到重要决策、踩坑、规律发现时，立即写入当天日志（`memory/daily/YYYY-MM-DD.md`），不等提炼
