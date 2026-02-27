@@ -150,3 +150,71 @@ ln -sf ~/project/ccworkspace ~/.openclaw/workspace/projects/code
 - 阿九通过软链接看到 Claude Code 的代码（方便审查）
 - Claude Code 看不到核心文件（安全隔离）
 - 项目代码统一管理
+
+---
+
+## 8. 经验建议（必读）
+
+### 8.1 关于权限跳过
+
+**必须**使用 `--dangerously-skip-permissions` 才能实现自动化：
+- 非交互式 shell 无法处理确认提示
+- 普通 `claude -p` 会卡住等待输入
+- 这是设计如此，不是 bug
+
+### 8.2 关于代理服务
+
+`ANTHROPIC_BASE_URL` 可以指向兼容代理（如 Moonshot）：
+- ✅ 基本代码生成可用
+- ⚠️ 某些高级功能可能受限
+- ⚠️ 需要测试验证具体功能
+
+### 8.3 关于环境变量
+
+`.env` 文件修改后**必须重启**才生效：
+```bash
+openclaw gateway restart
+```
+仅修改文件不重启，新会话仍用旧值。
+
+### 8.4 关于浏览器测试
+
+WSL2 网络隔离导致浏览器工具受限：
+- ❌ 无法直接访问 `127.0.0.1` 服务
+- ✅ Claude Code 可用 playwright/puppeteer 自测
+- ✅ 文件截图后通过 message 发送查看
+
+### 8.5 关于 skill 选择
+
+不是所有 skill 都能工作：
+- ❌ `openclaw-claude-code` 缺少后端服务
+- ✅ `coding-agent` 是指导文档，可用
+- ✅ 原生命令 `claude` 最可靠
+
+**原则**：先试原生命令，再考虑 skill。
+
+### 8.6 关于任务拆解
+
+复杂任务要拆解，Claude Code 不是万能的：
+- ✅ "创建一个登录页面" → 好
+- ❌ "创建一个完整的电商网站" → 太大，会超时或失败
+- ✅ 拆分为：首页 → 商品列表 → 购物车 → 结算
+
+### 8.7 关于迭代优化
+
+第一次结果不满意很正常：
+- 让 Claude Code 继续修改具体点
+- 提供明确的优化方向
+- 多次迭代直到满足
+
+**示例**：
+```bash
+# 第一轮
+claude --dangerously-skip-permissions "创建按钮"
+
+# 第二轮：优化
+claude --dangerously-skip-permissions "按钮颜色太淡，改成深蓝色，字体加大"
+
+# 第三轮：继续优化
+claude --dangerously-skip-permissions "添加悬停效果，鼠标放上去有阴影"
+```
