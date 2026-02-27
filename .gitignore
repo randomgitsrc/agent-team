@@ -26,3 +26,9 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+
+# OpenClaw 自动生成的 session 记录（可能含敏感信息）
+memory/20*-*.md
+!memory/daily/*.md
+!memory/private/*.md
+!memory/work/*.md
