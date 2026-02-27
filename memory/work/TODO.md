@@ -1,6 +1,6 @@
 # TODO - 任务清单
 
-> **更新**: 2026-02-27  
+> **更新**: 2026-02-27 14:02  
 > **负责人**: 阿九
 
 ---
@@ -15,14 +15,35 @@
 | 架构优化验证 | 02-26 |
 | GitHub分支统一（master→main） | 02-26 |
 | Cron修复（分支名+过期任务） | 02-26 |
+| OpenClaw升级至2026.2.26 | 02-27 |
 | 脚本权限修复 | 02-27 |
 | 冗余快照文件清理 | 02-27 |
-| AGENTS.md/MEMORY.md 引用同步 | 02-27 |
+| AGENTS.md/MEMORY.md引用同步 | 02-27 |
+| Memory系统配置（SiliconFlow+Qwen3-Embedding） | 02-27 |
 
 ## ⏳ 待办
 | 任务 | 优先级 | 说明 |
 |------|--------|------|
 | 记忆提炼验证 | P2 | 今晚23:45首次正常运行，明天检查结果 |
-| Memory插件排查 | P3 | 0 files/0 chunks，语义搜索不可用 |
 | 配额池化管理研究 | P3 | 评估模型配额管理方案 |
 | 健康仪表盘开发 | P3 | 系统状态监控工具 |
+
+---
+
+## 📋 当前配置备忘
+
+### Memory 系统
+```json
+{
+  "memorySearch": {
+    "enabled": true,
+    "sources": ["memory"],
+    "provider": "openai",
+    "model": "Qwen/Qwen3-Embedding-0.6B",
+    "remote": {
+      "baseUrl": "https://api.siliconflow.cn/v1",
+      "apiKey": "sk-xxxx"
+    }
+  }
+}
+```
