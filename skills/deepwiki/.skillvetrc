@@ -1,0 +1,5 @@
+# skillvet 配置文件
+# 忽略误报：deepwiki.js 中的 req.write(body) 是正常的 HTTP 请求发送数据，非文件写入
+
+# 禁用检查（网络请求相关警告）
+# 此 skill 需要调用 DeepWiki API，网络请求是正常功能
