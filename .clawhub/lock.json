@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "skills": {
+    "news-aggregator-skill": {
+      "version": "0.1.0",
+      "installedAt": 1772279763900
+    },
+    "github-mcp": {
+      "version": "1.0.0",
+      "installedAt": 1772280601831
+    }
+  }
+}
