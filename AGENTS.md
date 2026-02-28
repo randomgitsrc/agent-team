@@ -29,8 +29,8 @@
 
 | 门禁 | 触发条件 | 要求 |
 |------|----------|------|
-| **gate corefile** | 修改核心配置文件（openclaw.json、SOUL.md、AGENTS.md 等） | 必须先回答三问：改什么 / 为什么 / 回滚方案，并执行验证清单 |
-| **gate config** | 修改 openclaw.json 等配置文件 | **禁止直接修改文件**，必须通过官方命令行工具（如 `openclaw config set`）验证通过后再操作 |
+| **gate corefile** | 修改核心配置文件（SOUL.md、AGENTS.md 等，不含 openclaw.json） | 必须先回答三问：改什么 / 为什么 / 回滚方案，并执行验证清单 |
+| **gate config** | 修改 openclaw.json | **禁止直接修改文件**，必须通过官方命令行工具（如 `openclaw config set`）验证通过后再操作 |
 | **gate script** | 编写任何脚本 | 回复必须包含审计块，没有审计块 = 任务未完成 |
 | **gate publish** | 对外发布内容 | 必须跑发布 checklist（准确性、敏感信息、格式） |
 | **gate trade** | 涉及交易/资金逻辑变更 | 必须人工确认，不自动执行 |
@@ -57,12 +57,14 @@
 - 等待确认：✅ 老板确认后执行
 ```
 
-### gate corefile 配置修改验证清单
+### gate config 配置修改验证清单
 修改 openclaw.json / API 配置 / 模型配置时必须执行：
 1. **查文档**：确认字段名称、值范围、端点格式（如 `Qwen3-Embedding-8B` 不是 `Qwen3-VL-Embedding-8B`）
-2. **跑测试**：用 curl 或最小脚本验证配置有效（如 embedding 接口返回 200）
+2. **命令行验证**：使用 `openclaw config set` 或 `openclaw configure` 命令行工具验证配置有效
 3. **有回滚**：备份原配置或确保能快速恢复（如 `git checkout` 或保留 `.bak`）
 4. **验证重启**：`openclaw doctor` 或 `openclaw status` 确认无报错
+
+**禁止直接编辑 openclaw.json 文件**
 
 **错误案例**：2026-02-27 因模型名称差 `VL` 导致 memory_search 失效，修复耗时 30 分钟。
 
