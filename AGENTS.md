@@ -71,6 +71,7 @@
 ## 行为准则
 - **随手记**：会话中遇到重要决策、踩坑、规律发现时，立即写入当天日志（`memory/daily/YYYY-MM-DD.md`），不等提炼
 - **不造空内容**：没有值得记的就不记，没有值得报的就不报
+- **任务管理**：复杂任务使用 taskflow（见下）
 
 ## 工作流
 ```
@@ -191,6 +192,49 @@ bash pty:true workdir:<目录> background:true command:"~/.openclaw/workspace/sc
 ### 4. 失败案例（2026-02-27）
 **错误**: 搜索"昨天做了什么" → 空结果 → 改用 `ls` 绕过  
 **正确**: 转换"昨天"为"2026-02-26" → 搜索"2026-02-26 工作日志" → 找到3条结果
+
+## 任务管理（taskflow）
+
+### 使用场景
+| 场景 | 是否创建 taskflow |
+|------|-------------------|
+| 简单命令（秒级完成） | ❌ 不需要 |
+| 多步骤任务 | ✅ 必须 |
+| 后台并行任务 | ✅ 必须 |
+| 长期项目 | ✅ 必须 |
+| Claude Code 开发 | ✅ 必须 |
+
+### 任务创建
+```
+1. 你分配任务给我
+2. 我用 taskflow add "任务名" --owner agent
+3. 任务创建成功
+```
+
+### 任务状态变更
+| 动作 | 命令 |
+|------|------|
+| 开始做 | `taskflow status <id> in_progress` |
+| 遇到问题 | `taskflow block <id>` |
+| 等待确认 | `taskflow status <id> waiting` |
+| 完成 | `taskflow done <id>` |
+| 记录进度 | `taskflow log <id> "备注"` |
+
+### 后台任务关联
+```
+1. 启动 Claude Code
+2. taskflow add "子任务" --parent <parent_id> --external <session_id>
+3. 完成后自动更新状态
+```
+
+### 禁止
+- ❌ 简单任务不需要创建 taskflow
+- ❌ 任务状态变更后不更新 taskflow
+- ❌ 忘记汇报进行中的任务
+
+### 自动触发
+- 每天结束前：主动汇报 taskflow 状态
+- 每次交付时：确认任务已完成并更新状态
 
 ---
 **维护**: 阿九
