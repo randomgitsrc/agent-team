@@ -1,8 +1,20 @@
 # Claude Code 协作指南
 
 > **类型**: 工具使用指南  
-> **更新**: 2026-02-28  
+> **更新**: 2026-03-01  
 > **关联**: [工作流手册 - 导航](../WORKFLOW.md)
+
+---
+
+## 0. 协作流程（必读）
+
+```
+需求 → [我] Discovery（问清楚） + Planning（出方案） → [CC] Building（写代码） → [我] 验收 → 交付
+```
+
+**Discovery + Planning 阶段由我主导**，直接和你对话确认，不需要交给 CC。
+
+CC 只在 Building 阶段介入，负责写代码。
 
 ---
 
@@ -85,6 +97,8 @@ cd ~/.openclaw/workspace && openclaw gateway restart
 - ✅ 让 Claude 自测：用 playwright/puppeteer 截图验证
 - ✅ 迭代优化：不满意继续修改直到满足
 - ✅ 项目位置：`~/project/ccworkspace/`
+- ✅ 边缘情况：考虑空输入、网络失败、异常输入等，给出合理处理
+- ✅ 交付规范：完成后提供使用说明、部署步骤（如果需要）、后续可改进点
 
 ### 4.2 DON'T（避免）
 

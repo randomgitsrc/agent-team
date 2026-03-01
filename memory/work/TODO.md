@@ -1,6 +1,6 @@
 # TODO - 任务清单
 
-> **更新**: 2026-02-27 14:02  
+> **更新**: 2026-03-01 19:56  
 > **负责人**: 阿九
 
 ---
@@ -30,6 +30,13 @@
 
 ---
 
+## ✅ 2026-03-01 完成
+| 任务 | 完成时间 |
+|------|----------|
+| 记忆清理与整合 | 03-01 |
+
+---
+
 ## 📋 当前配置备忘
 
 ### Memory 系统
@@ -39,9 +46,9 @@
     "enabled": true,
     "sources": ["memory"],
     "provider": "openai",
-    "model": "Qwen/Qwen3-Embedding-0.6B",
+    "model": "Qwen/Qwen3-Embedding-8B",
     "remote": {
-      "baseUrl": "https://api.siliconflow.cn/v1",
+      "baseUrl": "https://ai.gitee.com/v1",
       "apiKey": "sk-xxxx"
     }
   }

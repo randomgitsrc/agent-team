@@ -2,6 +2,15 @@
   "mcpServers": {
     "exa": {
       "baseUrl": "https://mcp.exa.ai/mcp"
+    },
+    "github": {
+      "command": "npx -y @modelcontextprotocol/server-github",
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": ""
+      }
+    },
+    "context-mode": {
+      "command": "npx -y context-mode"
     }
   },
   "imports": []
