@@ -11,6 +11,9 @@
     },
     "context-mode": {
       "command": "npx -y context-mode"
+    },
+    "deepwiki": {
+      "baseUrl": "https://mcp.deepwiki.com/mcp"
     }
   },
   "imports": []
