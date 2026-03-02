@@ -16,7 +16,8 @@
 3. `IDENTITY.md` — 身份定义
 4. `AGENTS.md` — 工作区指南
 5. `MEMORY.md` — 记忆索引
-6. Skill列表 — 系统自动注入 available_skills
+6. `STRATEGY.md` — 战略摘要
+7. Skill列表 — 系统自动注入 available_skills
 
 ### 按需加载（需要时主动读取）
 - `memory/private/STRATEGY.md` — 完整战略

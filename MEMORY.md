@@ -5,10 +5,9 @@
 > **提炼**: 每日23:45
 
 ## 架构
-1. **私密记忆** (`private/`) - 战略、身份、用户
-2. **工作记忆** (`work/`) - 项目、任务
-3. **工作日志** (`daily/`) - 每日记录
-4. **Session 临时记录** (`~/.openclaw/sessions/`) - 自动清理，非 Git 追踪
+1. **工作记忆** (`work/`) - 项目、任务
+2. **工作日志** (`daily/`) - 每日记录
+3. **Session 临时记录** (`~/.openclaw/sessions/`) - 自动清理，非 Git 追踪
 
 ## Session 文件管理（安全隔离）
 OpenClaw 自动生成 `memory/20*.md` 对话记录，可能包含敏感信息（API key）。
@@ -32,7 +31,6 @@ OpenClaw 自动生成 `memory/20*.md` 对话记录，可能包含敏感信息（
 - Skill列表（系统注入 available_skills）
 
 ### 按需加载（需要时主动读取）
-- `memory/private/STRATEGY.md` — 完整战略
 - `memory/work/PROJECT.md` — 完整项目
 - `memory/work/TODO.md` — 任务清单
 - `memory/daily/YYYY-MM-DD.md` — 当日日志

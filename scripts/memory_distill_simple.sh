@@ -245,11 +245,11 @@ extract_and_update() {
     # 读取日志内容
     local content=$(cat "$daily_file")
     
-    # 提取关键决策章节（从"### 关键决策"到下一个"###"或文件结束）
-    local key_decisions=$(echo "$content" | sed -n '/^### 关键决策/,/^###/p' | sed '$d')
+    # 提取关键决策章节（从"## 关键决策"到下一个"##"或文件结束）
+    local key_decisions=$(echo "$content" | sed -n '/^## 关键决策/,/^##/p' | sed '$d')
     
     # 提取经验总结章节
-    local lessons=$(echo "$content" | sed -n '/^### 经验总结/,/^###/p' | sed '$d')
+    local lessons=$(echo "$content" | sed -n '/^## 经验总结/,/^##/p' | sed '$d')
     
     # 如果有内容，更新战略记忆
     if [[ -n "$key_decisions" ]]; then

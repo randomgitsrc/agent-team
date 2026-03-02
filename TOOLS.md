@@ -1,16 +1,12 @@
-# TOOLS.md - Local Notes (Private)
-
-> ⚠️ 私密文件 — 仅 CEO（阿九）可见  
-> 存放环境相关敏感信息（如 SSH、API key 位置），不对专家子会话开放。
+# TOOLS.md - Local Notes
 
 ## What Goes Here
 
-- 摄像头名称与位置
-- SSH 主机与别名
-- API key 存放路径（不记录 key 本身）
-- TTS 偏好音色
-- 房间 / 设备命名
-- 其他本地环境相关信息
+- 关键文件或敏感信息
+- 技能与技巧
+- 典型工作流程
+- 注意事项
+- 能力地图（skill、mcp及主动应用、主动探索）
 
 ## Browser
 You have access to a real web browser tool. Use the browser when:
@@ -41,10 +37,6 @@ Start script: `~/.start-openclaw-chrome.sh`
 
 ## Examples
 
-### Cameras
-- living-room → 主活动区，180° 广角
-- front-door → 入户门口，移动触发
-
 ### SSH
 - home-server → 192.168.1.100，user: admin
 
@@ -64,4 +56,74 @@ Start script: `~/.start-openclaw-chrome.sh`
 
 ---
 
-这是你的环境小抄，需要什么就往里记。
+## 🤖 能力地图（2026-03-02 更新）
+
+### 已安装 Skills（16个 ready）
+
+| 分类 | Skill | 用途 |
+|------|-------|------|
+| 编码 | coding-agent | 复杂代码开发（spawn 子 agent） |
+| | claude-code-skill | Claude Code 控制 |
+| 搜索 | find-skills | 发现新 skills |
+| | deepwiki | GitHub 代码研究 |
+| | news-aggregator-skill | 新闻聚合（8源） |
+| 安全 | healthcheck | 系统安全审计 |
+| | skillvet | Skill 安全扫描 |
+| 效率 | remind | 定时提醒 |
+| | tmux | 终端交互控制 |
+| 平台 | agent-reach | 推特/Reddit/YouTube等 |
+| 工具 | clawhub | Skill 管理 |
+| | mcporter | MCP 管理 |
+| | skill-creator | 创建 skill |
+| | weather | 天气查询 |
+| 任务 | ceo-team | 专项任务模式 |
+
+### MCP 服务
+| 服务 | 用途 |
+|------|------|
+| github | GitHub API 操作 |
+| context-mode | 本地代码执行/批量操作 |
+
+### 场景 → 工具映射
+
+| 场景 | 应该用什么 |
+|------|------------|
+| 查天气 | weather ✅ |
+| 搜新闻 | news-aggregator-skill ✅ |
+| 搜实时信息 | web_search / agent-reach |
+| 查 GitHub 代码 | deepwiki / github-mcp |
+| 复杂编码 | coding-agent / claude-code-skill |
+| 安全审计 | healthcheck / skillvet |
+| 定时提醒 | remind ✅ |
+| 浏览器操作 | browser 工具 |
+| 搜本地文档 | context-mode_search |
+| 搜记忆 | memory_search |
+| 读网页 | web_fetch |
+| 装新 skill | clawhub |
+| 发现新能力 | find-skills |
+
+### 扩展方向（优先级）
+
+| 建议接入 | 理由 | 优先级 |
+|----------|------|--------|
+| gog | 邮件+日历+文档，办公常用 | ⭐⭐⭐ |
+| summarize | 摘要/转录通用强 | ⭐⭐⭐ |
+| github skill | 本地 CLI，比 MCP 稳定 | ⭐⭐ |
+
+### 行动计划
+
+1. **遇到陌生场景时，主动说**"这个问题可以用 XX 解决"
+2. 每周盘点能力边界 → 不需要，改为"每次装新 skill 时更新 TOOLS.md"
+3. 新问题先想"有没有现成工具"，不知道时说"我可以学一下"
+
+### 回答问题准则（2026-03-02 补充）
+
+**不要直接给结论**，而是要有推理过程：
+
+| 场景 | 应该怎么答 |
+|------|------------|
+| 问"要不要做" | 给建议 + 推理过程 + 替代方案 + 问"要我去执行吗" |
+| 问"选哪个" | 给选项 + 推荐 + 理由 + 问"同意吗" |
+| 问"能跑吗" | 验证 + 潜在问题 + 改进建议 |
+
+---
