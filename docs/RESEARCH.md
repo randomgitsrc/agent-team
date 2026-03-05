@@ -20,7 +20,33 @@
 
 **状态**: v1.4.0
 
-### 2. openclaw-dashboard (mudrii)
+**研究状态**: 未完全研究透，GitHub 仓库可能已删除/改名
+
+### 2. Command Center (jontsai) ⭐ 轻量级
+
+**定位**: AI Agent 命令控制面板
+
+**技术特点**:
+- 零依赖（纯 Vanilla JS + Node.js）
+- ~200KB，无需构建步骤
+- SSE 实时推送（2秒更新）
+- 单 API 端点
+
+**功能**:
+- Session Monitoring - 实时会话
+- LLM Fuel Gauges - Token 使用/成本
+- System Vitals - CPU/内存/磁盘
+- Cron Jobs - 定时任务
+- Cerebro Topics - 自动话题标记
+- Memory Browser - 记忆浏览器
+- Cost Breakdown - 成本分析
+
+**部署**:
+```bash
+npx clawhub@latest install command-center
+```
+
+### 3. openclaw-dashboard (mudrii)
 
 **定位**: 零依赖命令中心
 
