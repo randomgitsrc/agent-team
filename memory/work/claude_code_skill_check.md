@@ -1,0 +1,27 @@
+# Claude Code Skill 自检
+- 记得如何用 Claude Code 进行开发任务么？
+- 记得Claude-Code Skill么？全部掌握该skill了么？
+  - 看 .openclaw/workspace/skills/claude-code
+    - 1. 核心原则
+    - 2. 调用命令模板
+    - 3. 开发流程（标准模式）
+    - 4. 代码问题处理流程
+    - 5. 项目结构（记忆管理）
+    - 6. 踩坑记录
+    - 7. 规则
+	- .lessons.md
+	- .project_rules.md
+- 用 Claude Code 开发的调用流程清楚了么？
+- 调用 Claude Code 的命令清楚么？
+- 测试下能正常调用 Claude Code 么？
+- 测试下能用Claude Code 进入 Plan Mode 进行交互么？
+- 开发任务要单独安排subagent，让他调用 Claude
+  Code 开发，完成后报告执行结果这个事儿清楚吗？
+- 用 Claude Code 完成开发后 ，要测试验收通过后才交给老板，清楚么？
+- 以上内容都清楚以后：
+  - 如果通过 Planning（前台）、plan mode 调用Claude Code命令验证通过的话：
+    - 回复老板内容：Plan Mode 调用正常
+  - 如果通过 执行开发 方式调用Claude Code命令验证通过的话：
+    - 回复老板内容追加：bg_task 调用正常
+  - 以上两项通过后，回复老板内容追加：CLAUDE CODE 尽在掌握，利利索索。
+  - 回复老板内容发给老板。
